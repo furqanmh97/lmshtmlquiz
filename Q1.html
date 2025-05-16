@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>True or False Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>True or False: Innovation Quiz</h2>
+
+  <form id="quizForm">
+    <div class="question">
+      <p><strong>1.</strong> Innovation is only about creating new products and services.</p>
+      <label><input type="radio" name="q1" value="true"> True</label><br>
+      <label><input type="radio" name="q1" value="false"> False</label>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="feedback" class="feedback"></div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const selected = document.querySelector('input[name="q1"]:checked');
+      const feedback = document.getElementById("feedback");
+
+      if (!selected) {
+        feedback.style.display = "block";
+        feedback.style.color = "red";
+        feedback.textContent = "Please select an answer.";
+        return;
+      }
+
+      feedback.style.display = "block";
+      if (selected.value === "false") {
+        feedback.style.color = "green";
+        feedback.textContent = "Correct! Innovation goes beyond just new products and services.";
+      } else {
+        feedback.style.color = "red";
+        feedback.textContent = "Incorrect. Innovation also includes processes, business models, and more.";
+      }
+    });
+  </script>
+</body>
+</html>
